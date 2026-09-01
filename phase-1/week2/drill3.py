@@ -13,11 +13,11 @@ records = [
 # Don't allow the program to crash.
 
 for record in records:
-    try:
-        if record["price"] is not None:
-            print(record["price"])
-    except KeyError:
-        print("Price not available")
+    price = record.get("price")
+    if price is not None:
+        print(f"Price: {price}")
+    else:
+        print("Price not available")    
 
 # Task 2
 
@@ -30,5 +30,7 @@ for record in records:
 prices = [record.get("price", 0) for record in records]
 print("Prices", prices)
 
-products=[record.get("name", 0) for record in records]
+# task 3
+products=[record.get("name") for record in records if record.get("price") is not None ]
 print(products)
+
