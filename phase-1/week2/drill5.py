@@ -59,15 +59,27 @@ for enriched_order in enriched_orders:
     print(f"Order ID: {enriched_order['order_id']}, Customer Name: {enriched_order['customer_name']}, Amount: {enriched_order['amount']}")
 
 
-prices = {order["order_id"]: order["amount"] for order in orders}
+prices = {enriched_order["customer_id"]: enriched_order["amount"] for enriched_order in enriched_orders}
 print("Prices:", prices)
 total = {}
 
-for id, price in prices.items():
-    if price is not None:
-        if id in total:
-            total[id] += price
-        else:
-            total[id] = price
+for enriched_order in enriched_orders:
+    name = enriched_order["customer_name"]
+    price = enriched_order["amount"]
+    total[name] = total.get(name, 0) + price
+
     
 print("Total:", total)
+
+
+from collections import defaultdict
+
+total_amounts = defaultdict(int)
+total = {}
+for enriched_order in enriched_orders:
+    # id = enriched_order["customer_id"]
+    # amount = enriched_order["amount"]
+    # total_amounts[id] += amount
+    total[name] = total.get(name, 0) + price
+
+print("Total Amounts:", total)
