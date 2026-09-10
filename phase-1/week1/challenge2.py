@@ -33,9 +33,7 @@ records = [
 ]
 
 Write a function: 
-clean_record(record)
-
-that returns a new cleaned dictionary.
+clean_record(record) that returns a new cleaned dictionary.
 
 For example:
 

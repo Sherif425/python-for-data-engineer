@@ -1,0 +1,36 @@
+from collections import defaultdict
+
+"""
+We want to build something conceptually like:
+{
+    1: [
+        {"order_id": 101, "customer_id": 1, "amount": 500},
+        {"order_id": 103, "customer_id": 1, "amount": 300}
+    ],
+    2: [
+        {"order_id": 102, "customer_id": 2, "amount": 750},
+        {"order_id": 105, "customer_id": 2, "amount": 250}
+    ],
+    3: [
+        {"order_id": 104, "customer_id": 3, "amount": 1200}
+    ]
+}
+
+defaultdict(int)   → aggregation
+defaultdict(list)  → grouping
+"""
+
+orders = [
+    {"order_id": 101, "customer_id": 1, "amount": 500},
+    {"order_id": 102, "customer_id": 2, "amount": 750},
+    {"order_id": 103, "customer_id": 1, "amount": 300},
+    {"order_id": 104, "customer_id": 3, "amount": 1200},
+    {"order_id": 105, "customer_id": 2, "amount": 250},
+]
+
+orders_by_customer = defaultdict(list)
+
+for order in orders:
+    orders_by_customer[order["customer_id"]].append(order)
+
+print(orders_by_customer)
