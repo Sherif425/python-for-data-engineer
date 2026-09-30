@@ -98,3 +98,31 @@ for order in orders:
     list_of_orders[order["customer_id"]].append(order["amount"])
 
 print(dict(list_of_orders))
+
+##-------------------------------
+# drill 6
+
+customers = [
+    {
+        "id": 1,
+        "name": "Ahmed",
+        "orders": [
+            {"id": 101, "amount": 500},
+            {"id": 103, "amount": 300}
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Mona",
+        "orders": [
+            {"id": 102, "amount": 750}
+        ]
+    }
+]
+
+order_ids = []
+for customer in customers:
+    for order in customer["orders"]:
+        order_ids.append(order["id"])
+
+print(order_ids)
